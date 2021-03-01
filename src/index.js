@@ -1,14 +1,36 @@
-//import {heroes} from './data/heroes';
-//imp
-//import {heroes} from './data/heroes'
+import {getHeroeById} from './bases/08-imp-exp'
 
-import { heroes } from "./data/heroes";
+// const promesa = new Promise((resolve, reject)=>{
 
+//     setTimeout(()=>{
+        
+//         const p1 = getHeroeById(2);
+//         resolve(p1);
+//         //reject('No se pudo encontrar el héroe');
+//     }, 2000)
 
+// });
 
-const getHeroeById = (id) => {
-    return heroes.find();
+// promesa.then((heroe)=>{
+//     console.log('heroe', heroe)
+// })
+// .catch(err=>console.warn(err));
+
+const getHeroeByAsync = (id) => {
+
+    return new Promise((resolve, reject)=>{
+
+        setTimeout(()=>{
+            
+            const p1 = getHeroeById(id);
+            resolve(p1);
+            //reject('No se pudo encontrar el héroe');
+        }, 2000)
+    
+    });
+
+    
 }
 
-console.log(getHeroeById(2));
-
+getHeroeByAsync(4)
+    .then(heroe => console.log('Heroe',heroe))
